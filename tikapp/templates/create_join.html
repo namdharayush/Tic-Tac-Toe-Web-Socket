@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100%;
+            height: 100vh;
+        }
+
+        div div {
+            margin: auto;
+            width: max-content;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            height: max-content;
+        }
+
+        button {
+            padding: 18px 30px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            background-color: black;
+            color: white;
+            font-weight: 450;
+            font-size: 15px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div>
+            <a href="/game/create-room"><button>Create Room</button></a>
+            <a href="/game/join-room"><button>Join Room</button></a>
+        </div>
+    </div>
+</body>
+
+</html>

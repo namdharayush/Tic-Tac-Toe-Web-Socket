@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Room Details</title>
+    <style>
+        form{
+            display: flex;
+            flex-direction: column;
+            width: 40%;
+            margin: auto;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        div {
+            height: 100vh;
+        }
+        form input{
+            padding: 10px 15px;
+            border-radius: 5px;
+            outline: none;
+            border: none;
+            background-color: black;
+            color: white;
+            font-size: 14px;
+            font-weight: 550;
+            margin-bottom: 10px;
+        }
+        #dropdown{
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            border: none;
+            background-color: black;
+            color: white;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            background-color: white;
+            color: black;
+            font-weight: 550;
+            font-size: 13px;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 0 11px 1px #0000001f;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div>
+        <form id="room-form">
+            <input  type="text" placeholder="Enter your name : " name="username" id="username" required>
+            <select name="dropdown" id="dropdown" required>
+                <option value="select your sign" disabled>Select your move</option>
+                <option  value="O">O</option>
+                <option value="X">X</option>
+            </select>
+            <button type="submit" id="create-room-btn">Create Room</button>
+        </form>
+    </div>
+
+
+    <script>
+        const form = document.getElementById('room-form')
+
+        form.onsubmit = (e) => {
+            e.preventDefault();
+            const user_sign = document.getElementById('dropdown').value  // get user sign value
+            sessionStorage.setItem('user_sign', user_sign) // set a session storage for user sign
+            const room_code = create_room_code()
+            window.location.href = '/game/tic-tac-toe/' + room_code + '/?' + 'createmove=' + user_sign + "&user=" + document.getElementById('username').value
+        }
+
+        function create_room_code() {
+            let char = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+            let room_code = ''
+            for (let i = 0; i <= 7; i++) {
+                room_code += char[Math.floor(Math.random() * char.length)]
+            }
+            return room_code
+        }
+
+    </script>
+</body>
+
+</html>

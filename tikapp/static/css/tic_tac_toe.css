@@ -1,0 +1,23 @@
+.tic-tak-btns{
+    height: 90vh;
+}
+.tic-tak-btns div button{
+    padding: 30px;
+    margin: 10px 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: black;
+    color: white;
+    box-sizing: border-box;
+}
+.row{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.col-7 div{
+    width:max-content;
+    
+    margin: auto;
+}

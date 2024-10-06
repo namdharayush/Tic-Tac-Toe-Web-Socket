@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Room Details</title>
+    <style>
+        form{
+            display: flex;
+            flex-direction: column;
+            width: 40%;
+            margin: auto;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        div {
+            height: 100vh;
+        }
+        form input{
+            padding: 10px 15px;
+            border-radius: 5px;
+            outline: none;
+            border: none;
+            background-color: black;
+            color: white;
+            font-size: 14px;
+            font-weight: 550;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            background-color: white;
+            color: black;
+            font-weight: 550;
+            font-size: 13px;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 0 11px 1px #0000001f;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <form method="post" id="join-form">
+            {% csrf_token %}
+            {% if error %}
+            <h6>{{error}}</h6>
+            {% endif %}
+            <input type="text" placeholder="Enter your name : " name="username" id="username" required>
+            <input type="text" placeholder="Enter the room code : " name="room_code" id="room-code" required>
+            <button type="submit" id="join-room-btn">Join Room</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('join-form').onsubmit = () => {
+            sessionStorage.setItem('usernamej',document.getElementById('username').value)
+        }
+    </script>
+</body>
+
+</html>

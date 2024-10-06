@@ -1,0 +1,44 @@
+form{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+div {
+    height: 100vh;
+}
+form input{
+    padding: 10px 15px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background-color: black;
+    color: white;
+    font-size: 14px;
+    font-weight: 550;
+    margin-bottom: 10px;
+}
+#dropdown{
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+}
+button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: white;
+    color: black;
+    font-weight: 550;
+    font-size: 13px;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 0 11px 1px #0000001f;
+}
