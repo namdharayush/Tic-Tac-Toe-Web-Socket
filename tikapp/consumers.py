@@ -102,10 +102,11 @@ class TicTacToeConsumer(AsyncJsonWebsocketConsumer):
     @sync_to_async
     def delete_model_data(self,room_code):
         print(f"Attempting to delete data for room_code: {room_code}")
+        data = TicTacToe.objects.get(room_code=room_code)
+        print(f"Found data: {data}")
+        data.delete()
         try:
-            data = TicTacToe.objects.get(room_code=room_code)
-            print(f"Found data: {data}")
-            data.delete()
+            
             print("Data deleted successfully.")
         except TicTacToe.DoesNotExist:
             print(f"No entry found for room_code: {room_code}")
