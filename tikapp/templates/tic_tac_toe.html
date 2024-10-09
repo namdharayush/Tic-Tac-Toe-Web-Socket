@@ -363,11 +363,11 @@
             <div class="col-6">
                 <div id="user-show">
                     <div>
-                        <h4 id="create-user-name">Ayush</h4>
+                        <h4 id="create-user-name"></h4>
                         <p id="result-create-user" class="text-center">0</p>
                     </div>
                     <div>
-                        <h4 id="join-user-name">Vishal</h4>
+                        <h4 id="join-user-name"></h4>
                         <p id="result-join-user" class="text-center">0</p>
                     </div>
                 </div>
@@ -398,7 +398,7 @@
         }
 
         const Socket = new WebSocket(
-            'wss://' + window.location.host + '/ws/tic/' + JSON.parse(room_code) + '/?q=' + check_params_for_disconnect_user + '/'
+            'ws://' + window.location.host + '/ws/tic/' + JSON.parse(room_code) + '/?q=' + check_params_for_disconnect_user + '/'
         )
 
 
@@ -504,6 +504,8 @@
                 }
             }
 
+            console.log(count)
+            console.log(winMoves)
             count += 1
             if (count == 11 && !winMoves) {
                 console.log(count)
