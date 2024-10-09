@@ -48,10 +48,11 @@ class TicTacToeConsumer(AsyncJsonWebsocketConsumer):
             await self.channel_layer.group_send(
                 self.room_group_name , {'type':'admin_disconnect_message','message':'Admin has closed the connection.'}
             )
-            await self.close()
+            
         await self.channel_layer.group_discard(
             self.room_group_name, self.channel_name
         )
+        await self.close()
         
     async def receive(self, text_data=None):
         try:
@@ -91,7 +92,6 @@ class TicTacToeConsumer(AsyncJsonWebsocketConsumer):
     def get_model_data(self,room_code):
         return TicTacToe.objects.get(room_code = room_code)
     
-    
     @sync_to_async
     def update_model_data(self,room_code):
         data = TicTacToe.objects.get(room_code = room_code)
@@ -101,6 +101,13 @@ class TicTacToeConsumer(AsyncJsonWebsocketConsumer):
     
     @sync_to_async
     def delete_model_data(self,room_code):
-        data = TicTacToe.objects.get(room_code = room_code)
-        data.delete()
-        return
+        print(f"Attempting to delete data for room_code: {room_code}")
+        try:
+            data = TicTacToe.objects.get(room_code=room_code)
+            print(f"Found data: {data}")
+            data.delete()
+            print("Data deleted successfully.")
+        except TicTacToe.DoesNotExist:
+            print(f"No entry found for room_code: {room_code}")
+        except Exception as e:
+            print(f"Error occurred while deleting data: {e}")

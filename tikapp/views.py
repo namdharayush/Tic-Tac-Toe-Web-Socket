@@ -23,6 +23,8 @@ def join_room(request):
     if(request.method == 'POST'):
         room_code = request.POST.get('room_code')
         username = request.POST.get('username')
+        data = TicTacToe.objects.get(room_code=room_code)
+        print(data)
         try:
             data = TicTacToe.objects.get(room_code=room_code)
             if(data.move == 'O'):

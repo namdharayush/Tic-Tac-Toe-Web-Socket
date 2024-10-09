@@ -6,7 +6,6 @@ class TicTacToe(models.Model):
     total_connection = models.IntegerField()
     create_user = models.CharField(max_length=50)
     join_user = models.CharField(max_length=50)
-
     
     def __str__(self):
         return self.room_code

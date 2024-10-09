@@ -403,7 +403,7 @@
 
 
         if (count % 2 == 0) {
-            if (user_sign == 'X') {
+            if (user_sign == 'O') {
                 h6.innerText = 'Opponent turn'
                 h6.style.color = 'red'
             }
@@ -413,7 +413,7 @@
             }
         }
         else {
-            if (user_sign == 'O') {
+            if (user_sign == 'X') {
                 h6.innerText = 'Opponent turn'
                 h6.style.color = 'red'
             }
@@ -461,6 +461,8 @@
                 btn.textContent = recieve_data.message
                 btn.style.color = recieve_data.message == 'X' ? 'red' : 'green'
             }
+
+            
 
             if (count % 2 == 0) {
                 if (user_sign == 'O') {
@@ -521,7 +523,6 @@
                     for (let x of document.getElementsByTagName('button')) {
                         x.innerText = ''
                     }
-                    check_params_for_disconnect_user = ''
                     count = 1
                     winMoves = ''
                     let classNameOfWinningLine = document.getElementById('span').getAttribute('class')
