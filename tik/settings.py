@@ -56,6 +56,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CSRF_TRUSTED_ORIGINS = ['tic-tac-toe-web-socket-6x2z.onrender.com']
+
+CSRF_COOKIE_SECURE = True  # If you are using HTTPS
+CSRF_COOKIE_HTTPONLY = False
+
 
 CHANNEL_LAYERS = {
     'default' : {
