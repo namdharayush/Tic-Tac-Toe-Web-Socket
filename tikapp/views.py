@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import TicTacToe
+from django.views.decorators.csrf import csrf_exempt
 
 ROOM_OWNER_MOVE = ''
 
@@ -13,7 +14,7 @@ def create_or_join_room(request):
 def create_room(request):
     return render(request, 'room.html')
 
-
+@csrf_exempt
 def join_room(request):
     
     error_msg = None
