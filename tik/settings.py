@@ -105,19 +105,14 @@ import dj_database_url
 
 DATABASES = {
     
+    # This is for Remote PostgreSQL : 
+    
     'default' : dj_database_url.config(
         default=os.getenv('DATABASE_URI'),
         conn_max_age=600
     )
     
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'tic_tac',      
-    #     'USER': 'root',      
-    #     'PASSWORD': '0HxyNdAkwtUpOynJD02NDbrtcQlLBqBq',       
-    #     'HOST': 'postgresql://root:0HxyNdAkwtUpOynJD02NDbrtcQlLBqBq@dpg-cs3mpc88fa8c73de5gug-a.oregon-postgres.render.com/tic_tac',      
-    #     'PORT': '5432',                      
-    # }
+    # This  is for MYSQL : 
     
     # 'default': {
     #     'ENGINE': 'django.db.backends.mysql',
