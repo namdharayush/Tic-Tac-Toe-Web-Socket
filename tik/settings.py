@@ -98,19 +98,35 @@ TEMPLATES = [
 # WSGI_APPLICATION = 'tik.wsgi.application'
 ASGI_APPLICATION = 'tik.asgi.application'
 
+import dj_database_url
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('NAME'),
-        'USER': os.getenv('USER'),
-        'PASSWORD': os.getenv('PASSWORD'),
-        'HOST':os.getenv('HOST'),
-        'PORT':'3306',
-    }
+    
+    'default' : dj_database_url.config(
+        default='postgresql://root:0HxyNdAkwtUpOynJD02NDbrtcQlLBqBq@dpg-cs3mpc88fa8c73de5gug-a.oregon-postgres.render.com/tic_tac',
+        conn_max_age=600
+    )
+    
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'tic_tac',      
+    #     'USER': 'root',      
+    #     'PASSWORD': '0HxyNdAkwtUpOynJD02NDbrtcQlLBqBq',       
+    #     'HOST': 'postgresql://root:0HxyNdAkwtUpOynJD02NDbrtcQlLBqBq@dpg-cs3mpc88fa8c73de5gug-a.oregon-postgres.render.com/tic_tac',      
+    #     'PORT': '5432',                      
+    # }
+    
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': os.getenv('NAME'),
+    #     'USER': os.getenv('USER'),
+    #     'PASSWORD': os.getenv('PASSWORD'),
+    #     'HOST':os.getenv('HOST'),
+    #     'PORT':'3306',
+    # }
 }
 
 
