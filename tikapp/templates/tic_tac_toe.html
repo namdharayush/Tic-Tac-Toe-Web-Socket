@@ -316,6 +316,7 @@
     <div class="tic-tak-btns" id="tic-tak-btns">
         <div class="loading_screen" id="loading_screen">
             <div>
+                <h4 id="room_code_text">Room Code  : </h4>
                 <h4>Opponent joining!</h4>
                 <div id="loader">
                     <div id="shadow"></div>
@@ -380,6 +381,7 @@
 
     <script>
         const room_code = document.getElementById('room_code').textContent
+        document.getElementById('room_code_text').textContent = "Room Code : " + room_code.replace(/"/g,'')
         let user_sign = sessionStorage.getItem('user_sign') // get user sign from session  storage 
 
         if (!user_sign) {
@@ -422,7 +424,6 @@
                 h6.style.color = 'green'
             }
         }
-
         let winning_moments = [
             [0, 1, 2],
             [3, 4, 5],
@@ -433,21 +434,14 @@
             [0, 4, 8],
             [2, 4, 6]
         ]
-
         let winMoves = ''
-
-
-
         Socket.onmessage = (e) => {
             const recieve_data = JSON.parse(e['data'])
-
-
             if (recieve_data.admin_disconnected) {
                 document.getElementById('overlay').style.display = 'block'
                 document.getElementById('exit_game').style.display = 'block'
                 return
             }
-
             if (recieve_data.join_user) {
                 document.getElementById('create-user-name').innerText = recieve_data.userc.split('_')[0]
                 document.getElementById('join-user-name').innerText = recieve_data.userj.split('_')[0]
@@ -461,9 +455,6 @@
                 btn.textContent = recieve_data.message
                 btn.style.color = recieve_data.message == 'X' ? 'red' : 'green'
             }
-
-            
-
             if (count % 2 == 0) {
                 if (user_sign == 'O') {
                     h6.innerText = 'Opponent turn'
@@ -505,7 +496,6 @@
                     document.getElementById('play_game_txt').innerText = 'OPPONENT WIN!'
                 }
             }
-
             console.log(count)
             console.log(winMoves)
             count += 1
@@ -559,9 +549,6 @@
             }
 
         }
-
-
-
         function checkStatus() {
             let all_btns = document.querySelectorAll('#outer_div button')
             let span = document.getElementById('span')
@@ -584,14 +571,7 @@
                 }
             })
         }
-
-
-
-
-
         const outer_div_of_btns = document.getElementById('outer_div')
-
-
         outer_div_of_btns.addEventListener('click', (e) => {
             if (!winMoves) {
                 if (!e.target.innerText) {
@@ -613,12 +593,6 @@
                 }
             }
         })
-
-
-
-
     </script>
-
 </body>
-
 </html>
