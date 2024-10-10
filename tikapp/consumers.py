@@ -1,6 +1,7 @@
 import json
 import urllib.parse
 from channels.generic.websocket import AsyncJsonWebsocketConsumer
+from django.db import close_old_connections
 
 from asgiref.sync import sync_to_async
 import os
@@ -13,6 +14,7 @@ from tikapp.models import TicTacToe
 
 class TicTacToeConsumer(AsyncJsonWebsocketConsumer):
     async def connect(self):
+        close_old_connections()
         self.room_code = self.scope['url_route']['kwargs']['room_code']
         query_string = self.scope['query_string'].decode()
         query_params = urllib.parse.parse_qs(query_string)
