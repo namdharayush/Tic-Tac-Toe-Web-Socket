@@ -110,7 +110,6 @@ DATABASES = {
         'PASSWORD': os.getenv('PASSWORD'),
         'HOST':os.getenv('HOST'),
         'PORT':'3306',
-        'CONN_MAX_AGE': 600,
     }
 }
 
